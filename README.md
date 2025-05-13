@@ -3,7 +3,7 @@
 项目介绍
   
 水下图像拼接增强系统(UWIS)是一个集成化的解决方案，专门解决水下环境图像的质量增强和拼接问题。系统集成了图像增强、智能特征匹配、动态决策和无监督拼接优化等多个模块，能够自动处理水下场景特有的挑战，如低对比度、颜色失真和可见度有限等问题。
-![img_3.png](img_3.png)![img_3](https://github.com/user-attachments/assets/dbc62395-c783-432e-b294-ff84b0c3e8c9)
+[img_3](https://github.com/user-attachments/assets/dbc62395-c783-432e-b294-ff84b0c3e8c9)
 
 系统架构
 
@@ -145,11 +145,14 @@ UIQM↑：水下图像质量指标，专为水下场景设计
 2.test_finetune.py
 
 增强-拼接-微调流程示例
-![img_2.png](img_2.png)
+![img_2](https://github.com/user-attachments/assets/7dd5ca38-9c74-4587-b1ef-01750dfdfd32)
+
 拼接效果对比示例
-![img.png](img.png)
+![img_1](https://github.com/user-attachments/assets/630e02bf-eef4-4416-8267-93edef7ff2eb)
+
 详细分析报告：
-[evaluation_report.html](evaluation_report.html)
+[Uploading evaluation_report.html…]()
+
 性能与局限性
 * 计算需求：LoFTR特征匹配需要较高的GPU内存，对于高分辨率图像可能需要降采样
 * 色调一致性：拼接优化专注于边界区域，对整体色调一致性的改善有限
