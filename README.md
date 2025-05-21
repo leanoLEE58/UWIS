@@ -1,3 +1,168 @@
+# Underwater Image Stitching and Enhancement System (UWIS)
+
+## Project Introduction
+
+The Underwater Image Stitching and Enhancement System (UWIS) is an integrated solution specifically designed to address the challenges of image quality enhancement and stitching in underwater environments. The system integrates multiple modules including image enhancement, intelligent feature matching, dynamic decision-making, and unsupervised stitching optimization, capable of automatically processing the unique challenges of underwater scenes such as low contrast, color distortion, and limited visibility.
+
+![img_3.png](img_3.png)
+
+## Main Features
+
+- **Intelligent Image Enhancement**: Underwater image enhancement based on FUnIE-GAN, supporting ultra-conservative fine-tuning
+- **Dynamic Input Decision**: Automatic evaluation and selection of the best input images (original or enhanced)
+- **Advanced Feature Matching**: Dynamic matcher selection combining LoFTR and SIFT
+- **Precise Stitching**: Robust homography estimation based on RANSAC
+- **Unsupervised Stitching Optimization**: Boundary optimization network designed specifically for underwater images
+- **Evaluation System**: Integrated PSNR, SSIM
+- **Visualization Diagnostics**: Detailed visualization display of each processing stage
+
+## Installation and Dependencies
+
+### System Requirements
+
+- Python 3.7+
+- GPU with CUDA support (recommended)
+
+### Installation
+
+1. Create a virtual environment (optional)
+```bash
+conda create -n underwater python=3.8
+conda activate underwater
+Install dependencies
+
+pip install tensorflow==2.8.0
+pip install torch==1.10.0 torchvision==0.11.0
+pip install kornia==0.6.4
+pip install opencv-python matplotlib numpy scikit-image tqdm
+Directory Structure
+
+underwater_stitching_system/
+├── config.py                   # Configuration file
+├── main.py                     # Main entry program
+├── train_finetune.py           # FUnIE-GAN fine-tuning training program
+├── test_finetune.py            # Fine-tuned model testing and evaluation program
+├── components/                 # Component modules
+│   ├── __init__.py
+│   ├── feature_matching.py     # Feature matching module
+│   ├── dynamic_decision.py     # Dynamic decision module
+│   ├── ransac_stitcher.py      # RANSAC stitcher
+│   ├── funiegan_enhancer.py    # FUnIE-GAN enhancer
+│   ├── funiegan_finetuner.py   # FUnIE-GAN fine-tuner
+│   └── unsupervised_refinement.py # Unsupervised optimization network
+├── utils/                      # Utility functions
+│   ├── __init__.py
+│   ├── metrics.py              # Evaluation metrics calculation
+│   └── visualization.py        # Visualization tools
+└── data/                       # Data directory
+    ├── input/                  # Input image pairs
+    ├── enhanced/               # Enhanced images
+    ├── stitched/               # Stitching results
+    └── ground_truth/           # Optional reference ground truth
+Usage
+System Configuration
+Before using the system, modify the config.py configuration file:
+
+Path Configuration
+
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(ROOT_DIR, "data")
+RESULTS_DIR = os.path.join(ROOT_DIR, "results")
+MODELS_DIR = os.path.join(ROOT_DIR, "models")
+FUnIE-GAN Model Paths
+
+FUNIEGAN_MODEL_PATH = os.path.join(MODELS_DIR, "funiegan/model_15320_")
+FUNIEGAN_FINETUNED_PATH = os.path.join(MODELS_DIR, "finetuned/underwater_funie_gan")
+Fine-tuning Parameters
+
+FINETUNE_CONFIG = {
+    "input_dir": os.path.join(DATA_DIR, "finetune/input"),
+    "target_dir": os.path.join(DATA_DIR, "finetune/target"),
+    "batch_size": 4,
+    "epochs": 10,
+    "learning_rate": 0.00001,
+    "save_interval": 2
+}
+Basic Operation
+Interactive Mode (Default)
+
+python main.py
+Fine-tune FUnIE-GAN Enhancer
+
+python main.py --mode finetune
+Or use the dedicated training script:
+
+
+python train_finetune.py
+Test Fine-tuned Model
+
+python test_finetune.py --model_path models/finetuned/underwater_funie_gan --test_dir data/test
+Train Stitching Optimization Network
+
+python main.py --mode train_refinement
+Process a Single Pair of Images
+
+python main.py --mode process --img1 path/to/image1.jpg --img2 path/to/image2.jpg
+Batch Process Image Pairs
+
+python main.py --mode batch --input_dir path/to/image_pairs
+Data Preparation
+Fine-tuning Dataset: Place original underwater images in data/finetune/input, corresponding target enhanced images in data/finetune/target
+Stitching Test: Place image pairs in data/input following the format prefix_A.jpg and prefix_B.jpg
+Reference Ground Truth: Optional reference ground truth images can be placed in the data/ground_truth directory
+Key Technology Explanation
+Dynamic Decision Module (DDM)
+DDM automatically selects the most suitable input for stitching by analyzing the matchability and color quality of original and enhanced images:
+
+Matchability Score: Evaluates the ability to establish feature matches between two images
+Color Quality Score: Analyzes image contrast and color balance
+Conservative Decision Mechanism: Selects enhanced images only when they significantly outperform the original
+Dynamic Matcher Selection
+The system intelligently selects the most appropriate feature matching algorithm after analyzing image features:
+
+For texture-rich scenes, it tends to use LoFTR
+For high-contrast scenes with obvious edges, it tends to use SIFT
+Automatic failure switching mechanism ensures high matching success rate
+Unsupervised Stitching Optimization
+An unsupervised learning method designed specifically for underwater scenes, requiring no reference ground truth:
+
+Mask-based Region Identification: Automatically detects stitching boundary regions
+Multi-objective Loss Function: Boundary smoothness, structure preservation, color consistency, brightness balancing
+Residual Learning: Only learns minor corrections, preserving the original structure
+Fine-tuning Technique
+FUnIE-GAN fine-tuning adopts an ultra-conservative strategy to ensure the original enhancement capability is not compromised:
+
+Only trains the last 2% of network layers
+Uses extremely low learning rate (0.00001)
+Applies reference model constraints, maintaining 90% conservative loss weight
+Batch processing and data augmentation to improve robustness
+Evaluation Metrics
+PSNR↑: Peak Signal-to-Noise Ratio, evaluates reconstruction quality
+SSIM↑: Structural Similarity, evaluates structure preservation
+CE↓: Contrast Entropy, evaluates contrast distribution
+UIQM↑: Underwater Image Quality Metric, designed specifically for underwater scenes
+Fine-tuning Training and Testing Functions
+In addition to the main program, we provide two dedicated scripts for fine-tuning and testing FUnIE-GAN:
+
+train_finetune.py
+test_finetune.py
+Enhancement-Stitching-Fine-tuning Process Example
+Stitching Process Example
+
+Stitching Effect Comparison Example
+Stitching Effect Comparison
+
+Detailed Analysis Report: evaluation_report.html
+
+Performance and Limitations
+Computational Requirements: LoFTR feature matching requires higher GPU memory; downsampling may be needed for high-resolution images
+Tonal Consistency: Stitching optimization focuses on boundary regions, with limited improvement in overall tonal consistency
+Real-time Performance: The current implementation emphasizes accuracy over speed and is not suitable for real-time systems
+Maintainers
+[Jiayi Li,  Guihui Li]
+[{jiayilee, guihuilee}@stu.ouc.edu.cn]
+```
+
 **水下图像拼接增强系统 (UWIS)**
  
 项目介绍
