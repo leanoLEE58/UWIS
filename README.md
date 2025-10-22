@@ -3,7 +3,7 @@
 ## Project Introduction
 
 The Underwater Image Stitching and Enhancement System (UWIS) is an integrated solution specifically designed to address the challenges of image quality enhancement and stitching in underwater environments. The system integrates multiple modules including image enhancement, intelligent feature matching, dynamic decision-making, and unsupervised stitching optimization, capable of automatically processing the unique challenges of underwater scenes such as low contrast, color distortion, and limited visibility.
-
+![img_1](https://github.com/user-attachments/assets/630e02bf-eef4-4416-8267-93edef7ff2eb)
 [img_3](https://github.com/user-attachments/assets/dbc62395-c783-432e-b294-ff84b0c3e8c9)
 
 ## Main Features
