@@ -461,9 +461,6 @@ We welcome contributions! Please feel free to:
 
 If you find this project helpful, please consider giving it a star ⭐!
 
-[![Star History Chart](https://api.star-history.com/svg?repos=leanoLEE58/UWIS&type=Date)](https://star-history.com/#leanoLEE58/UWIS&Date)
-
----
 
 <div align="center">
 
