@@ -394,7 +394,7 @@ If you find our work useful in your research, please consider citing:
 
 ## 🎓 Resources
 
-- 📄 **Full Paper**: [Google Drive](https://drive.google.com/file/d/1YgP6hyiUIdvq7SKqVgJGTp2ukI_OmMBl/view?usp=sharing)
+- 📄 **Full Paper**: [Google Drive](https://drive.google.com/file/d/1smfx3g0z5ALuykHzjahgh_nz-WG2WLUv/view?usp=sharing)
 - 🎤 **Oral Presentation**: [Google Slides](https://docs.google.com/presentation/d/1xooebMjuQOqWVQYA39l-LfWS1ji_ffQ9/edit?usp=sharing&ouid=108431554049751899932&rtpof=true&sd=true)
 - 📦 **UWIS Dataset**: [Download](https://github.com/leanoLEE58/UWIS/blob/main/UWIS%20dataset)
 - 💬 **Discussion**: [GitHub Issues](https://github.com/leanoLEE58/UWIS/issues)
