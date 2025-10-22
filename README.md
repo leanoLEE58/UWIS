@@ -14,7 +14,7 @@
 
 *Accepted at IEEE OCEANS 2025 (Oral Presentation)*
 
-[📄 Paper](https://drive.google.com/file/d/1YgP6hyiUIdvq7SKqVgJGTp2ukI_OmMBl/view?usp=sharing) | [🎤 Slides](https://docs.google.com/presentation/d/1xooebMjuQOqWVQYA39l-LfWS1ji_ffQ9/edit?usp=sharing&ouid=108431554049751899932&rtpof=true&sd=true) | [📦 Dataset](https://github.com/leanoLEE58/UWIS/blob/main/UWIS%20dataset)
+[📄 Paper]([https://drive.google.com/file/d/1YgP6hyiUIdvq7SKqVgJGTp2ukI_OmMBl/view?usp=sharing](https://drive.google.com/file/d/1smfx3g0z5ALuykHzjahgh_nz-WG2WLUv/view?usp=sharing)) | [🎤 Slides](https://docs.google.com/presentation/d/1xooebMjuQOqWVQYA39l-LfWS1ji_ffQ9/edit?usp=sharing&ouid=108431554049751899932&rtpof=true&sd=true) | [📦 Dataset](https://github.com/leanoLEE58/UWIS/blob/main/UWIS%20dataset)
 
 </div>
 
