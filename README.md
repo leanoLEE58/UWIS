@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![OCEANS 2025](https://img.shields.io/badge/OCEANS-2025-blue.svg)](https://drive.google.com/file/d/1YgP6hyiUIdvq7SKqVgJGTp2ukI_OmMBl/view?usp=sharing)
+[![OCEANS 2025](https://img.shields.io/badge/OCEANS-2025-blue.svg)](https://brest25.oceansconference.org/)
 [![Presentation](https://img.shields.io/badge/Slides-PPT-orange.svg)](https://docs.google.com/presentation/d/1xooebMjuQOqWVQYA39l-LfWS1ji_ffQ9/edit?usp=sharing&ouid=108431554049751899932&rtpof=true&sd=true)
 [![Dataset](https://img.shields.io/badge/Dataset-UWIS-green.svg)](https://github.com/leanoLEE58/UWIS/blob/main/UWIS%20dataset)
 [![License](https://img.shields.io/badge/License-MIT-red.svg)](LICENSE)
