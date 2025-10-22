@@ -1,331 +1,342 @@
-# Underwater Image Stitching and Enhancement System (UWIS)
+# UWIS: Underwater Image Stitching with Dynamic Enhancement
 
-## Project Introduction
+<div align="center">
 
-The Underwater Image Stitching and Enhancement System (UWIS) is an integrated solution specifically designed to address the challenges of image quality enhancement and stitching in underwater environments. The system integrates multiple modules including image enhancement, intelligent feature matching, dynamic decision-making, and unsupervised stitching optimization, capable of automatically processing the unique challenges of underwater scenes such as low contrast, color distortion, and limited visibility.
-![img_1](https://github.com/user-attachments/assets/630e02bf-eef4-4416-8267-93edef7ff2eb)
-[img_3](https://github.com/user-attachments/assets/dbc62395-c783-432e-b294-ff84b0c3e8c9)
+[![OCEANS 2025](https://img.shields.io/badge/OCEANS-2025-blue.svg)](your-paper-link)
+[![Project Page](https://img.shields.io/badge/Project-Page-green.svg)](your-project-page)
+[![Presentation](https://img.shields.io/badge/Slides-PPT-orange.svg)](your-ppt-link)
+[![License](https://img.shields.io/badge/License-MIT-red.svg)](LICENSE)
 
-## Main Features
+**[Jiayi Li](link)¹ · [Kaizhi Dong](link)² · [Guihui Li](link)¹ · [Mai Yan](link)¹ · [Haiyong Zheng](link)¹**
 
-- **Intelligent Image Enhancement**: Underwater image enhancement based on FUnIE-GAN, supporting ultra-conservative fine-tuning
-- **Dynamic Input Decision**: Automatic evaluation and selection of the best input images (original or enhanced)
-- **Advanced Feature Matching**: Dynamic matcher selection combining LoFTR and SIFT
-- **Precise Stitching**: Robust homography estimation based on RANSAC
-- **Unsupervised Stitching Optimization**: Boundary optimization network designed specifically for underwater images
-- **Evaluation System**: Integrated PSNR, SSIM
-- **Visualization Diagnostics**: Detailed visualization display of each processing stage
+¹Ocean University of China, ²Ocean University of China
 
-## Installation and Dependencies
+*Accepted at IEEE OCEANS 2025 (Oral Presentation)*
 
-### System Requirements
+[Paper](your-arxiv-link) | [Slides](your-ppt-link) | [Video](your-video-link) | [Dataset](dataset-link)
 
+</div>
+
+---
+
+## 📢 News
+
+- **[2025.XX]** 🎉 Paper accepted to **OCEANS 2025** as **Oral Presentation**
+- **[2025.XX]** 🌟 Code and dataset publicly released
+- **[2025.XX]** 📊 UWIS dataset with 28,526 image pairs now available
+
+---
+
+## 🌊 Overview
+
+Underwater image stitching is crucial for ocean exploration, marine habitat monitoring, and underwater robotics. However, unique challenges in underwater environments—such as severe light attenuation, color distortion, motion blur, and marine snow—make traditional stitching methods inadequate.
+
+We introduce **UWIS**, the **first large-scale benchmark dataset** specifically designed for underwater image stitching, along with a **dynamic feature enhancement and stitching framework** that intelligently adapts to diverse underwater conditions.
+
+<div align="center">
+<img width="974" alt="Underwater Degradation Types" src="https://github.com/user-attachments/assets/55f145d6-ed31-4988-957a-714f3770bd7f" />
+
+*Figure 1: Six typical underwater image degradation scenarios in the UWIS dataset: large parallax, low contrast, motion blur, color deterioration, non-uniform illumination, and marine snow artifacts.*
+</div>
+
+---
+
+## ✨ Key Contributions
+
+### 🎯 **1. UWIS Dataset - First Underwater Stitching Benchmark**
+
+We present the first large-scale dataset tailored for underwater image stitching with **28,526 carefully annotated image pairs** covering six challenging underwater scenarios.
+
+<div align="center">
+<img width="1608" alt="Dataset Generation Pipeline" src="https://github.com/user-attachments/assets/4ec9324b-37fc-40df-ae8e-b2525f1bf884" />
+
+*Figure 2: Our novel dataset generation pipeline combines non-rigid distortion, viewpoint transformation, and homography alignment to realistically simulate underwater parallax and geometric distortions.*
+</div>
+
+**Dataset Features:**
+- 📦 **28,526 image pairs** with comprehensive annotations
+- 🎨 Six degradation scenarios: parallax, blur, low contrast, color shift, uneven lighting, marine snow
+- 🏷️ Complete labels: homography matrices, ground truth, enhancement references
+- 🌍 Real-world underwater scenes from EUVP, MSRB, and UVEB datasets
+
+---
+
+### 🚀 **2. Dynamic Enhancement & Stitching Framework**
+
+Unlike conventional methods that blindly enhance all images, our framework **intelligently decides** when enhancement helps and when it harms stitching quality.
+
+<div align="center">
+<img width="1313" alt="Framework Architecture" src="https://github.com/user-attachments/assets/62c7c5d4-673a-4f28-b63c-7962e70049d1" />
+
+*Figure 3: Our three-stage framework: (a) Stage 1 - FUnIE-GAN enhancement, (b) Stage 2 - Dynamic Decision Making with adaptive input selection and matcher choice, (c) Stage 3 - Robust stitching with unsupervised refinement.*
+</div>
+
+**Framework Highlights:**
+
+#### 🎨 **Stage 1: Adaptive Image Enhancement**
+- Fine-tuned FUnIE-GAN for underwater color restoration
+- Conservative training strategy preserving structural details
+
+#### 🧠 **Stage 2: Dynamic Decision Making (DDM)**
+Our key innovation - **DDM intelligently chooses the optimal processing strategy**:
+
+<div align="center">
+<img width="464" alt="Dynamic Decision Process" src="https://github.com/user-attachments/assets/9b6a5e4b-c512-4c28-a275-784b345d5a1c" />
+
+*Figure 4: Dynamic decision process evaluating both matchability and color quality. The system automatically selects enhanced or original images based on quantitative assessment.*
+</div>
+
+**Key Finding:** 
+- ✅ **64.1%** of cases benefit from enhancement
+- ⚠️ **35.9%** perform better with original images
+- 🎯 DDM automatically makes the right choice for each scenario
+
+**Dual Dynamic Selection:**
+1. **Image Selector**: Chooses between original/enhanced based on feature matchability + color quality
+2. **Matcher Selector**: Switches between LoFTR (texture-rich) and SIFT (high-contrast) algorithms
+
+#### 🔧 **Stage 3: Stitching & Refinement**
+- Robust RANSAC-based homography estimation
+- Unsupervised refinement network for seamless blending
+
+---
+
+### 📊 **3. Superior Performance**
+
+<div align="center">
+<img width="1002" alt="Qualitative Comparison" src="https://github.com/user-attachments/assets/7b8c43c4-8726-4730-a640-afdeb0508dd6" />
+
+*Figure 5: Qualitative comparison on UWIS dataset. Our method achieves more natural transitions and better preserves structural details compared to APAP and UDIS++.*
+</div>
+
+**Quantitative Results:**
+
+| Method | PSNR↑ | SSIM↑ | MSE↓ |
+|--------|--------|--------|--------|
+| APAP+RANSAC | 23.42 | 0.682 | 912.57 |
+| UDIS++ | 26.51 | 0.736 | 643.88 |
+| **Ours** | **26.97** | **0.777** | **626.51** |
+
+**Improvements over UDIS++:**
+- 📈 **+0.46 dB** PSNR
+- 📈 **+5.57%** SSIM  
+- 📉 **-2.77%** MSE
+
+---
+
+## 🔬 Technical Insights
+
+### Feature Matching Comparison
+
+<div align="center">
+<img width="883" alt="Feature Matching Comparison" src="https://github.com/user-attachments/assets/847aa3c8-1596-4d82-95ad-3da69259fec2" />
+
+*Figure 6: LoFTR (top) detects 2,071 high-confidence matches (avg. 0.776) with balanced distribution, significantly outperforming traditional methods (bottom) in challenging underwater conditions.*
+</div>
+
+### Complete Processing Pipeline
+
+<div align="center">
+<img width="1027" alt="Stitching and Refinement Process" src="https://github.com/user-attachments/assets/9852f454-201c-44f6-8ab9-cb1e8a9ab6ec" />
+
+*Figure 7: Complete workflow from input images (a,b) through initial stitching (c) to refined result (d). The difference map (e) shows refinement focuses on seam regions while preserving structural integrity.*
+</div>
+
+---
+
+## 🛠️ Installation
+
+### Requirements
 - Python 3.7+
-- GPU with CUDA support (recommended)
+- CUDA-capable GPU (RTX 3090 recommended)
+- 64GB RAM (recommended)
 
-### Installation
+### Quick Start
 
-1. Create a virtual environment (optional)
 ```bash
-conda create -n underwater python=3.8
-conda activate underwater
-Install dependencies
+# Clone the repository
+git clone https://github.com/your-username/UWIS.git
+cd UWIS
 
+# Create conda environment
+conda create -n uwis python=3.8
+conda activate uwis
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+### Dependencies
+```bash
 pip install tensorflow==2.8.0
 pip install torch==1.10.0 torchvision==0.11.0
 pip install kornia==0.6.4
 pip install opencv-python matplotlib numpy scikit-image tqdm
-Directory Structure
-
-underwater_stitching_system/
-├── config.py                   # Configuration file
-├── main.py                     # Main entry program
-├── train_finetune.py           # FUnIE-GAN fine-tuning training program
-├── test_finetune.py            # Fine-tuned model testing and evaluation program
-├── components/                 # Component modules
-│   ├── __init__.py
-│   ├── feature_matching.py     # Feature matching module
-│   ├── dynamic_decision.py     # Dynamic decision module
-│   ├── ransac_stitcher.py      # RANSAC stitcher
-│   ├── funiegan_enhancer.py    # FUnIE-GAN enhancer
-│   ├── funiegan_finetuner.py   # FUnIE-GAN fine-tuner
-│   └── unsupervised_refinement.py # Unsupervised optimization network
-├── utils/                      # Utility functions
-│   ├── __init__.py
-│   ├── metrics.py              # Evaluation metrics calculation
-│   └── visualization.py        # Visualization tools
-└── data/                       # Data directory
-    ├── input/                  # Input image pairs
-    ├── enhanced/               # Enhanced images
-    ├── stitched/               # Stitching results
-    └── ground_truth/           # Optional reference ground truth
-Usage
-System Configuration
-Before using the system, modify the config.py configuration file:
-
-Path Configuration
-
-ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.join(ROOT_DIR, "data")
-RESULTS_DIR = os.path.join(ROOT_DIR, "results")
-MODELS_DIR = os.path.join(ROOT_DIR, "models")
-FUnIE-GAN Model Paths
-
-FUNIEGAN_MODEL_PATH = os.path.join(MODELS_DIR, "funiegan/model_15320_")
-FUNIEGAN_FINETUNED_PATH = os.path.join(MODELS_DIR, "finetuned/underwater_funie_gan")
-Fine-tuning Parameters
-
-FINETUNE_CONFIG = {
-    "input_dir": os.path.join(DATA_DIR, "finetune/input"),
-    "target_dir": os.path.join(DATA_DIR, "finetune/target"),
-    "batch_size": 4,
-    "epochs": 10,
-    "learning_rate": 0.00001,
-    "save_interval": 2
-}
-Basic Operation
-Interactive Mode (Default)
-
-python main.py
-Fine-tune FUnIE-GAN Enhancer
-
-python main.py --mode finetune
-Or use the dedicated training script:
-
-
-python train_finetune.py
-Test Fine-tuned Model
-
-python test_finetune.py --model_path models/finetuned/underwater_funie_gan --test_dir data/test
-Train Stitching Optimization Network
-
-python main.py --mode train_refinement
-Process a Single Pair of Images
-
-python main.py --mode process --img1 path/to/image1.jpg --img2 path/to/image2.jpg
-Batch Process Image Pairs
-
-python main.py --mode batch --input_dir path/to/image_pairs
-Data Preparation
-Fine-tuning Dataset: Place original underwater images in data/finetune/input, corresponding target enhanced images in data/finetune/target
-Stitching Test: Place image pairs in data/input following the format prefix_A.jpg and prefix_B.jpg
-Reference Ground Truth: Optional reference ground truth images can be placed in the data/ground_truth directory
-Key Technology Explanation
-Dynamic Decision Module (DDM)
-DDM automatically selects the most suitable input for stitching by analyzing the matchability and color quality of original and enhanced images:
-
-Matchability Score: Evaluates the ability to establish feature matches between two images
-Color Quality Score: Analyzes image contrast and color balance
-Conservative Decision Mechanism: Selects enhanced images only when they significantly outperform the original
-Dynamic Matcher Selection
-The system intelligently selects the most appropriate feature matching algorithm after analyzing image features:
-
-For texture-rich scenes, it tends to use LoFTR
-For high-contrast scenes with obvious edges, it tends to use SIFT
-Automatic failure switching mechanism ensures high matching success rate
-Unsupervised Stitching Optimization
-An unsupervised learning method designed specifically for underwater scenes, requiring no reference ground truth:
-
-Mask-based Region Identification: Automatically detects stitching boundary regions
-Multi-objective Loss Function: Boundary smoothness, structure preservation, color consistency, brightness balancing
-Residual Learning: Only learns minor corrections, preserving the original structure
-Fine-tuning Technique
-FUnIE-GAN fine-tuning adopts an ultra-conservative strategy to ensure the original enhancement capability is not compromised:
-
-Only trains the last 2% of network layers
-Uses extremely low learning rate (0.00001)
-Applies reference model constraints, maintaining 90% conservative loss weight
-Batch processing and data augmentation to improve robustness
-Evaluation Metrics
-PSNR↑: Peak Signal-to-Noise Ratio, evaluates reconstruction quality
-SSIM↑: Structural Similarity, evaluates structure preservation
-CE↓: Contrast Entropy, evaluates contrast distribution
-UIQM↑: Underwater Image Quality Metric, designed specifically for underwater scenes
-Fine-tuning Training and Testing Functions
-In addition to the main program, we provide two dedicated scripts for fine-tuning and testing FUnIE-GAN:
-
-train_finetune.py
-test_finetune.py
-Enhancement-Stitching-Fine-tuning Process Example
-Stitching Process Example
-
-Stitching Effect Comparison Example
-Stitching Effect Comparison
-
-Detailed Analysis Report: evaluation_report.html
-
-Performance and Limitations
-Computational Requirements: LoFTR feature matching requires higher GPU memory; downsampling may be needed for high-resolution images
-Tonal Consistency: Stitching optimization focuses on boundary regions, with limited improvement in overall tonal consistency
-Real-time Performance: The current implementation emphasizes accuracy over speed and is not suitable for real-time systems
-Maintainers
-[Jiayi Li,  Guihui Li]
-[{jiayilee, guihuilee}@stu.ouc.edu.cn]
 ```
 
-**水下图像拼接增强系统 (UWIS)**
- 
-项目介绍
-  
-水下图像拼接增强系统(UWIS)是一个集成化的解决方案，专门解决水下环境图像的质量增强和拼接问题。系统集成了图像增强、智能特征匹配、动态决策和无监督拼接优化等多个模块，能够自动处理水下场景特有的挑战，如低对比度、颜色失真和可见度有限等问题。
-[img_3](https://github.com/user-attachments/assets/dbc62395-c783-432e-b294-ff84b0c3e8c9)
+---
 
-系统架构
+## 📁 Dataset Structure
 
-主要特性
+```
+UWIS/
+├── data/
+│   ├── train/                    # Training set (90%)
+│   │   ├── input/                # Original image pairs
+│   │   ├── enhanced/             # Enhanced images
+│   │   ├── homography/           # Homography matrices
+│   │   └── ground_truth/         # Stitching ground truth
+│   └── test/                     # Test set (10%)
+│       └── ...
+├── models/
+│   ├── funiegan/                 # Pre-trained FUnIE-GAN
+│   └── refinement/               # Refinement network weights
+└── results/
+    └── visualizations/           # Output visualizations
+```
 
-* 智能图像增强：基于FUnIE-GAN的水下图像增强，支持超保守微调
-* 动态输入决策：自动评估和选择最佳输入图像（原始或增强）
-* 高级特征匹配：结合LoFTR和SIFT的动态匹配器选择
-* 精确拼接：基于RANSAC的鲁棒单应性估计
-* 无监督拼接优化：专为水下图像设计的边界优化网络
-* 评估体系：集成PSNR、SSIM
-* 可视化诊断：各处理阶段的详细可视化展示
+**📥 [Download UWIS Dataset](dataset-download-link)** (X GB)
 
-**安装与依赖**
-系统要求
-* Python 3.7+
-* CUDA支持的GPU (推荐)
+---
 
-**依赖安装**
+## 🚀 Usage
 
-# 创建虚拟环境(可选)
-* conda create -n underwater python=3.8
-* conda activate underwater
+### Basic Stitching
 
-# 安装依赖
-1. pip install tensorflow==2.8.0
-2. pip install torch==1.10.0 torchvision==0.11.0
-3. pip install kornia==0.6.4
-4. pip install opencv-python matplotlib numpy scikit-image tqdm
-目录结构
+```bash
+# Process a single image pair
+python main.py --mode process \
+    --img1 data/test/coral_A.jpg \
+    --img2 data/test/coral_B.jpg \
+    --output results/coral_stitched.jpg
 
-* underwater_stitching_system/
-* ├── config.py                     # 配置文件
-* ├── main.py                       # 主入口程序
-* ├── train_finetune.py             # FUnIE-GAN微调训练程序
-* ├── test_finetune.py              # 微调模型测试评估程序
-* ├── components/                   # 组件模块
-* │   ├── __init__.py
-* │   ├── feature_matching.py       # 特征匹配模块
-* │   ├── dynamic_decision.py       # 动态决策模块
-* │   ├── ransac_stitcher.py        # RANSAC拼接器
-* │   ├── funiegan_enhancer.py      # FUnIE-GAN增强器
-* │   ├── funiegan_finetuner.py     # FUnIE-GAN微调器
-* │   └── unsupervised_refinement.py# 无监督优化网络
-* ├── utils/                        # 工具函数
-* │   ├── __init__.py
-* │   ├── metrics.py                # 评估指标计算
-* │   └── visualization.py          # 可视化工具
-* └── data/                         # 数据目录
-*     ├── input/                    # 输入图像对
-* 
-*     ├── enhanced/                 # 增强图像
-*     ├── stitched/                 # 拼接结果
-*     └── ground_truth/             # 可选的参考真值
-使用方法
-配置系统
-在使用系统前，先修改config.py配置文件：
+# Batch processing
+python main.py --mode batch \
+    --input_dir data/test/input \
+    --output_dir results/batch_output
+```
 
+### Fine-tuning FUnIE-GAN
 
-# 路径配置
-* ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-* DATA_DIR = os.path.join(ROOT_DIR, "data")
-* RESULTS_DIR = os.path.join(ROOT_DIR, "results")
-* MODELS_DIR = os.path.join(ROOT_DIR, "models")
+```bash
+# Train on your data
+python train_finetune.py \
+    --input_dir data/finetune/input \
+    --target_dir data/finetune/target \
+    --epochs 10 \
+    --batch_size 4
+```
 
-# FUnIE-GAN模型路径
-FUNIEGAN_MODEL_PATH = os.path.join(MODELS_DIR, "funiegan/model_15320_")
-FUNIEGAN_FINETUNED_PATH = os.path.join(MODELS_DIR, "finetuned/underwater_funie_gan")
+### Training Refinement Network
 
-# 微调参数
-* FINETUNE_CONFIG = {
-*     "input_dir": os.path.join(DATA_DIR, "finetune/input"),
-*     "target_dir": os.path.join(DATA_DIR, "finetune/target"),
-*     "batch_size": 4,
-*     "epochs": 10,
-*     "learning_rate": 0.00001,
-*     "save_interval": 2
-* }
+```bash
+# Unsupervised refinement training
+python main.py --mode train_refinement \
+    --stitched_dir data/stitched \
+    --epochs 20
+```
 
-基本运行
-交互式模式（默认）
+---
 
-python main.py
-微调FUnIE-GAN增强器
+## 📊 Evaluation
 
-python main.py --mode finetune
-# 或使用专用训练脚本
-python train_finetune.py
-测试微调后的模型
+```bash
+# Evaluate on test set
+python evaluate.py \
+    --test_dir data/test \
+    --model_path models/finetuned \
+    --output results/evaluation_report.html
+```
 
-python test_finetune.py --model_path models/finetuned/underwater_funie_gan --test_dir data/test
-训练拼接优化网络
+**Metrics:**
+- 📈 PSNR (Peak Signal-to-Noise Ratio)
+- 📈 SSIM (Structural Similarity Index)
+- 📉 MSE (Mean Squared Error)
+- 🌊 UIQM (Underwater Image Quality Measure)
 
-python main.py --mode train_refinement
-处理单对图像
+---
 
-python main.py --mode process --img1 path/to/image1.jpg --img2 path/to/image2.jpg
-批量处理图像对
+## 🎬 Demo & Visualization
 
-python main.py --mode batch --input_dir path/to/image_pairs
-数据准备
-微调数据集：将原始水下图像放在data/finetune/input，对应的目标增强图像放在data/finetune/target
-拼接测试：将成对图像按prefix_A.jpg和prefix_B.jpg格式放在data/input
-参考真值：可选的真值参考图像可放在data/ground_truth目录
-关键技术解释
-动态决策模块(DDM)
-DDM通过分析原始和增强图像的匹配性和颜色质量，自动选择最适合拼接的输入：
+### Interactive Demo
+```bash
+# Launch interactive GUI
+python demo.py
+```
 
-匹配性评分：评估两幅图像间建立特征匹配的能力
-颜色质量评分：分析图像的对比度和色彩平衡
-保守决策机制：仅当增强版本显著优于原始版本时才选择增强图像
-动态匹配器选择
-系统分析图像特征后，智能选择最适合的特征匹配算法：
+### Video Processing
+```bash
+# Process underwater video sequences
+python process_video.py \
+    --input underwater_scene.mp4 \
+    --output panoramic_result.mp4
+```
 
-对于纹理丰富的场景，倾向于使用LoFTR
-对于高对比度和明显边缘的场景，倾向于使用SIFT
-自动故障切换机制确保匹配成功率
-无监督拼接优化
-专为水下场景设计的无监督学习方法，不需要参考真值：
+---
 
-基于蒙版的区域识别：自动检测拼接边界区域
-多目标损失函数：边界平滑度、结构保持、颜色一致性、亮度均衡
-残差学习：仅学习微小修正，保留原始结构
-微调技术
-FUnIE-GAN微调采用超保守策略，确保不破坏原有增强能力：
+## 📖 Citation
 
-只训练最后2%的网络层
-使用极低学习率(0.00001)
-应用参考模型约束，保持90%的保守性损失权重
-批量处理和数据增强以提高鲁棒性
-评估指标
-PSNR↑：峰值信噪比，评估重建质量
-SSIM↑：结构相似性，评估结构保留程度
-CE↓：对比度熵，评估对比度分布
-UIQM↑：水下图像质量指标，专为水下场景设计
-微调训练和测试函数
-在主程序之外，我们提供了两个专用脚本用于FUnIE-GAN的微调和测试：
-1.train_finetune.py
-2.test_finetune.py
+If you find our work useful in your research, please consider citing:
 
-增强-拼接-微调流程示例
-![img_2](https://github.com/user-attachments/assets/7dd5ca38-9c74-4587-b1ef-01750dfdfd32)
+```bibtex
+@inproceedings{li2025uwis,
+  title={UWIS: Underwater Image Stitching Dataset and a Dynamic Pipeline for Feature Enhancement and Stitching},
+  author={Li, Jiayi and Dong, Kaizhi and Li, Guihui and Yan, Mai and Zheng, Haiyong},
+  booktitle={OCEANS 2025},
+  year={2025},
+  organization={IEEE}
+}
+```
 
-拼接效果对比示例
-![img_1](https://github.com/user-attachments/assets/630e02bf-eef4-4416-8267-93edef7ff2eb)
+---
 
-详细分析报告：
-[Uploading evaluation_report.html…]()
+## 🎓 Resources
 
+- 📄 **Paper**: [arXiv](your-arxiv-link) | [IEEE Xplore](ieee-link)
+- 🎤 **Presentation**: [Slides](your-ppt-link) | [Video](your-video-link)
+- 💾 **Dataset**: [Download](dataset-link) | [Documentation](dataset-doc)
+- 💬 **Discussion**: [GitHub Issues](issues-link)
 
+---
 
-性能与局限性
-* 计算需求：LoFTR特征匹配需要较高的GPU内存，对于高分辨率图像可能需要降采样
-* 色调一致性：拼接优化专注于边界区域，对整体色调一致性的改善有限
-* 实时性能：当前实现重点在准确性而非速度，不适用于实时系统
+## 🏆 Acknowledgments
 
-维护者
-* [Jiayi Li1, Kaizhi Dong, Guihui Li]
-* [{jiayilee, dongkaizhi, guihuilee}@stu.ouc.edu.cn
+This work was supported by:
+- National Natural Science Foundation of China (No. 62171421)
+- Taishan Scholars Youth Expert Program of Shandong Province (No. tsqn202306096)
+- Fundamental Research Funds for the Central Universities (No. 202261007)
 
+We thank the authors of EUVP, MSRB, and UVEB datasets for making their data publicly available.
+
+---
+
+## 📧 Contact
+
+- **Jiayi Li**: jiayilee@stu.ouc.edu.cn
+- **Kaizhi Dong**: dongkaizhi@stu.ouc.edu.cn
+- **Guihui Li** (Corresponding): guihuilee@stu.ouc.edu.cn
+
+**Ocean University of China**  
+College of Electronic Engineering & Computer Science and Technology
+
+---
+
+## 📜 License
+
+This project is released under the [MIT License](LICENSE).
+
+---
+
+## 🌟 Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=your-username/UWIS&type=Date)](https://star-history.com/#your-username/UWIS&Date)
+
+---
+
+<div align="center">
+
+**Made with ❤️ for the underwater computer vision community**
+
+*If you have any questions or suggestions, feel free to open an issue or reach out!*
+
+</div>
