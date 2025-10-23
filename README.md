@@ -427,7 +427,7 @@ Qingdao, Shandong, China
 
 ---
 
-## 📜 License
+## 📜 License（pending）
 
 This project is released under the [MIT License](LICENSE).
 
