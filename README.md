@@ -414,35 +414,17 @@ We thank the authors of **EUVP**, **MSRB**, and **UVEB** datasets for making the
 ## 📧 Contact
 
 **Authors:**
-- **Jiayi Li** - jiayilee@stu.ouc.edu.cn
+- **Jiayi Li** - leanolee58@gmail.com
 - **Kaizhi Dong** - dongkaizhi@stu.ouc.edu.cn
 - **Guihui Li** (Corresponding Author) - guihuilee@stu.ouc.edu.cn
-- **Mai Yan** (Corresponding Author) - yanmai@ouc.edu.cn
-- **Haiyong Zheng** - zhenghaiyong@ouc.edu.cn
+
 
 **Institution:**  
 Ocean University of China  
 College of Electronic Engineering  
 Qingdao, Shandong, China
 
----
 
-## 📜 License（pending）
-
-This project is released under the [MIT License](LICENSE).
-
-```
-Copyright (c) 2025 Ocean University of China
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-```
 
 ---
 
