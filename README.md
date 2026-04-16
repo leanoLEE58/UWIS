@@ -6,7 +6,7 @@
 [![Presentation](https://img.shields.io/badge/Slides-PPT-orange.svg)](https://docs.google.com/presentation/d/1xooebMjuQOqWVQYA39l-LfWS1ji_ffQ9/edit?usp=sharing&ouid=108431554049751899932&rtpof=true&sd=true)
 [![Dataset](https://img.shields.io/badge/Dataset-UWIS-green.svg)](https://github.com/leanoLEE58/UWIS/blob/main/UWIS%20dataset)
 
-**[Jiayi Li](mailto:jiayilee@stu.ouc.edu.cn)¹ · [Kaizhi Dong](mailto:dongkaizhi@stu.ouc.edu.cn)² · [Guihui Li](mailto:guihuilee@stu.ouc.edu.cn)¹ · [Mai Yan](mailto:yanmai@ouc.edu.cn)¹ · [Haiyong Zheng](mailto:zhenghaiyong@ouc.edu.cn)¹**
+**[Jiayi Li](mailto:leanolee58@gmail)¹ · [Kaizhi Dong](mailto:dongkaizhi@stu.ouc.edu.cn)² · [Guihui Li](mailto:guihuilee@stu.ouc.edu.cn)¹ · [Mai Yan](mailto:yanmai@ouc.edu.cn)¹ · [Haiyong Zheng](mailto:zhenghaiyong@ouc.edu.cn)¹**
 
 ¹College of Electronic Engineering, Ocean University of China  
 ²College of Computer Science and Technology, Ocean University of China
@@ -165,61 +165,6 @@ Our **key innovation** - DDM intelligently chooses the optimal processing strate
 - CUDA-capable GPU (RTX 3090 recommended)
 - 64GB RAM (recommended for large-scale processing)
 
-### Quick Start
-
-```bash
-# Clone the repository
-git clone https://github.com/leanoLEE58/UWIS.git
-cd UWIS
-
-# Create conda environment
-conda create -n uwis python=3.8
-conda activate uwis
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-### Dependencies
-```bash
-pip install tensorflow==2.8.0
-pip install torch==1.10.0 torchvision==0.11.0
-pip install kornia==0.6.4
-pip install opencv-python matplotlib numpy scikit-image tqdm
-```
-
----
-
-## 📁 Project Structure
-
-```
-UWIS/
-├── config.py                      # Configuration file
-├── main.py                        # Main entry point
-├── train_finetune.py             # FUnIE-GAN fine-tuning
-├── test_finetune.py              # Model testing and evaluation
-├── components/
-│   ├── feature_matching.py       # Feature matching module
-│   ├── dynamic_decision.py       # Dynamic Decision Making (DDM)
-│   ├── ransac_stitcher.py        # RANSAC-based stitcher
-│   ├── funiegan_enhancer.py      # FUnIE-GAN enhancer
-│   └── unsupervised_refinement.py # Refinement network
-├── utils/
-│   ├── metrics.py                # Evaluation metrics
-│   └── visualization.py          # Visualization tools
-├── data/
-│   ├── train/                    # Training set (90%)
-│   ├── test/                     # Test set (10%)
-│   └── finetune/                 # Fine-tuning data
-├── models/
-│   ├── funiegan/                 # Pre-trained FUnIE-GAN
-│   └── refinement/               # Refinement network weights
-└── results/
-    ├── stitched/                 # Stitching results
-    └── visualizations/           # Diagnostic visualizations
-```
-
----
 
 ## 🚀 Usage
 
@@ -296,24 +241,6 @@ DDM_THRESHOLD = 0.1       # Decision threshold
 
 ---
 
-## 📊 Evaluation
-
-```bash
-# Evaluate on test set
-python evaluate.py \
-    --test_dir data/test \
-    --model_path models/finetuned \
-    --output results/evaluation_report.html
-```
-
-**Evaluation Metrics:**
-- 📈 **PSNR** (Peak Signal-to-Noise Ratio) - Higher is better
-- 📈 **SSIM** (Structural Similarity Index) - Higher is better
-- 📉 **MSE** (Mean Squared Error) - Lower is better
-- 🌊 **UIQM** (Underwater Image Quality Measure) - Higher is better
-- 📉 **CE** (Contrast Entropy) - Lower is better
-
----
 
 ## 💡 Key Features
 
@@ -393,16 +320,7 @@ If you find our work useful in your research, please consider citing:
 
 ---
 
-## 🏆 Acknowledgments
 
-This work was supported by:
-- **National Natural Science Foundation of China** (No. 62171421)
-- **Taishan Scholars Youth Expert Program** of Shandong Province (No. tsqn202306096)
-- **Fundamental Research Funds for the Central Universities** (No. 202261007)
-
-We thank the authors of **EUVP**, **MSRB**, and **UVEB** datasets for making their data publicly available, which greatly facilitated our research.
-
----
 
 ## 📧 Contact
 
