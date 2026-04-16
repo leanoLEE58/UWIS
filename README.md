@@ -19,13 +19,6 @@
 
 ---
 
-## 📢 News
-
-- **[2025.01]** 🎉 Paper accepted to **IEEE OCEANS 2025** as **Oral Presentation**
-- **[2025.01]** 🌟 Code and UWIS dataset publicly released
-- **[2025.01]** 📊 UWIS benchmark with **28,526 annotated image pairs** now available
-
----
 
 ## 🌊 Overview
 
